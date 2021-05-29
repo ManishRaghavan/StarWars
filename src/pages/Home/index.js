@@ -4,6 +4,7 @@ import "./index.css";
 import { BiSearch } from "@react-icons/all-files/bi/BiSearch";
 import { SuggestionCard } from "../../Components/SuggestionCard/SuggestionCard";
 import { request, debounce } from "./utils";
+import { useHistory } from "react-router-dom";
 
 function HomePage() {
   const [query, Setquery] = React.useState("");
@@ -11,15 +12,18 @@ function HomePage() {
   const [data, Setdata] = React.useState(null);
   const [error, Seterror] = React.useState(false);
   const [activeBox, SetActiveBox] = React.useState(-1);
+  const[person_id,setId] = React.useState(1)
   const inputref = React.useRef();
+  const scrollref = React.useRef();
+  const history = useHistory()
 
   const handleQuery = debounce((e) => {
     return Setquery(e);
   });
 
-  const getData = () => {
+  const getData = (searchQuery) => {
     Setloader(true);
-    request(query)
+    request(searchQuery)
       .then((res) => {
         if (res.data.count === 0) {
           Setdata(null);
@@ -39,7 +43,7 @@ function HomePage() {
   };
 
   const handleSearch = () => {
-    getData();
+    history.push(`/person/${person_id}`)
   };
 
   React.useEffect(() => {
@@ -47,40 +51,46 @@ function HomePage() {
       alert("something went wrong reoad the page");
     }
     if (query !== "") {
-      getData();
+      getData(query);
     }
   }, [query]);
 
   const handlekeyUp = (e) => {
     
+    
     switch (e.keyCode) {
       case 38:
+        scrollref.current.scrollTop-=22
         if(activeBox<0){
-          SetActiveBox(data?.length)
+          SetActiveBox(data?.length-1)
         }
         SetActiveBox((prev) => prev - 1);
         break;
       case 40:
+        scrollref.current.scrollTop+=22
         if(activeBox===data?.length-1){
           SetActiveBox(-1)
         }
         SetActiveBox((prev) => prev + 1);
         break;
+      case 13:
+        getData(inputref.current.value);
+        break;
       default:
         break;
     }
-    
-    
   };
 
   React.useEffect(()=>{
    
-    if (activeBox > -1) {
+    if (activeBox > -1 && data?.length>activeBox) {
+      
       let currentName = data[activeBox].name;
       inputref.current.value= currentName;
-      
+      let idNumber = data[activeBox]?.url.split("/")
+      setId(idNumber?idNumber[5]*1:1)
     }
-  },[activeBox,data]) 
+  },[activeBox,data,person_id]) 
 
   return (
     <div onKeyUp={handlekeyUp}>
@@ -117,7 +127,7 @@ function HomePage() {
         ) : null}
       </div>
       {data !== null ? (
-        <div className="suggestion-box">
+        <div className="suggestion-box" ref={scrollref}>
           <div className="suggestion-box--splitLine"></div>
           {data?.map((item, i) => (
             <SuggestionCard key={i} {...item} active={activeBox} number={i} />
