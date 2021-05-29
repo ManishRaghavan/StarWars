@@ -5,6 +5,13 @@
     display: flex;
    position: relative;
 }
+.suggestionCard:hover{
+    background-color:rgb(185, 185, 185) ;
+    cursor: pointer;
+}
+.suggestionCard_Active{
+    background-color:rgb(185, 185, 185) ;
+}
 .suggestionCard_name{
     padding-left: 20px;
 }
