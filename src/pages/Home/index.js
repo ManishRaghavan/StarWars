@@ -80,7 +80,7 @@ function HomePage() {
       inputref.current.value= currentName;
       
     }
-  },[activeBox,data])
+  },[activeBox,data]) 
 
   return (
     <div onKeyUp={handlekeyUp}>
