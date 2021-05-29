@@ -66,7 +66,7 @@ function Person() {
       </div>
       <div className="person-card--contentBox">
         <p className="person-card--contentBox--p">
-          Hair Color : {person_data?.eye_color}
+          Eye Color : {person_data?.eye_color}
         </p>
       </div>
       <div className="person-card--redirectBtn" onClick={handleRedirect}>
