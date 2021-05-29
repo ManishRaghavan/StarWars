@@ -95,3 +95,19 @@
     color: #F8DB15;
     text-align: center;
 }
+@media only screen and (max-width: 640px) {
+    .search-box{
+        width: 252px;
+    }
+    .search-box--input{
+        width: 150px;
+    }
+    .suggestion-box{
+        width: 300px;
+    }
+    .search-box--cancelBtn{
+        margin-left: 10px;
+    }.search-box--searchBtn{
+        width: 30px;
+    }
+}

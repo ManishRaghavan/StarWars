@@ -8,8 +8,10 @@
     background-color: #ff8800;
     text-align: center;
     margin-left: 30px;
+    cursor: pointer;
 }
 .person-card--redirectBtn--p{
     padding: 8px;
     font-weight: 800;
+    color: black;
 }
