@@ -49,12 +49,6 @@ You can also take the glimpse of our Project,just follow the below steps:
 
 <br>
 
-## Snapshots 📷
-
-
-
-<br>
-
 ## Features
 
 1. User can character of star wars
@@ -62,5 +56,15 @@ You can also take the glimpse of our Project,just follow the below steps:
 3. Implemented deboucing such that the network request will be reduced
 
 <br>
+
+## Snapshots 📷
+<img  src="https://github.com/ManishRaghavan/StarWars/blob/master/designs/snapshot1.png" alt="star wars logo"/>
+<br/>
+<img  src="https://github.com/ManishRaghavan/StarWars/blob/master/designs/snapshot2.png" alt="star wars logo"/>
+<br/>
+<img  src="https://github.com/ManishRaghavan/StarWars/blob/master/designs/snapshot3.png" alt="star wars logo"/>
+<br>
+
+
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffd700" fill-opacity="1" d="M0,192L48,192C96,192,192,192,288,170.7C384,149,480,107,576,106.7C672,107,768,149,864,154.7C960,160,1056,128,1152,133.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
