@@ -6,27 +6,32 @@ import logo from "./star-wars-logo.png";
 
 function Person() {
   const [person_data, setPersonData] = React.useState([]);
-  const history = useHistory()
+  const history = useHistory();
   const location = useLocation();
 
+  /*
+  parsing the url to get the person id such that we can get 
+  data of the person by sending the get request
+  */
   React.useEffect(() => {
     let id = +location.pathname.split("/")[2];
-     axios
+    axios
       .get(`http://swapi.dev/api/people/${id}/`)
       .then((res) => setPersonData(res.data))
-      .catch((err) => (err));
-  }, []);
+      .catch((err) => err);
+  }, [location.pathname]);
 
-  const handleRedirect =()=>{
-    history.push("/")
-  }
+  const handleRedirect = () => {
+    history.push("/");
+  };
 
   return (
     <div className="person-card">
+      {/* svg taken from getwave.io */}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffd700"
-          fill-opacity="1"
+          
           d="M0,0L34.3,16C68.6,32,137,64,206,117.3C274.3,171,343,245,411,
           250.7C480,256,549,192,617,154.7C685.7,117,754,107,823,117.3C891.4,128,
           960,160,1029,192C1097.1,224,1166,256,1234,261.3C1302.9,267,1371,245,1406,
@@ -40,19 +45,29 @@ function Person() {
         <p className="person-card--contentBox--p">Name : {person_data?.name}</p>
       </div>
       <div className="person-card--contentBox">
-        <p className="person-card--contentBox--p">Birth Year : {person_data?.birth_year}</p>
+        <p className="person-card--contentBox--p">
+          Birth Year : {person_data?.birth_year}
+        </p>
       </div>
       <div className="person-card--contentBox">
-        <p className="person-card--contentBox--p">Gender : {person_data?.gender}</p>
+        <p className="person-card--contentBox--p">
+          Gender : {person_data?.gender}
+        </p>
       </div>
       <div className="person-card--contentBox">
-        <p className="person-card--contentBox--p">Height : {person_data?.height}</p>
+        <p className="person-card--contentBox--p">
+          Height : {person_data?.height}
+        </p>
       </div>
       <div className="person-card--contentBox">
-        <p className="person-card--contentBox--p">Hair Color : {person_data?.hair_color}</p>
+        <p className="person-card--contentBox--p">
+          Hair Color : {person_data?.hair_color}
+        </p>
       </div>
       <div className="person-card--contentBox">
-        <p className="person-card--contentBox--p">Hair Color : {person_data?.eye_color}</p>
+        <p className="person-card--contentBox--p">
+          Hair Color : {person_data?.eye_color}
+        </p>
       </div>
       <div className="person-card--redirectBtn" onClick={handleRedirect}>
         <p className="person-card--redirectBtn--p">Go back to search..</p>

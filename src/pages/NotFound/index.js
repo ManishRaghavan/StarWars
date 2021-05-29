@@ -1,12 +1,11 @@
-import React from 'react';
-import './index.css';
+import React from "react";
+import "./index.css";
 import { useHistory } from "react-router-dom";
 function NotFound() {
-  
-  const history = useHistory()
-  const handleRedirect =()=>{
-    history.push("/")
-  }
+  const history = useHistory();
+  const handleRedirect = () => {
+    history.push("/");
+  };
 
   return (
     <div className="not-found">
