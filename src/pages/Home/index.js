@@ -12,7 +12,7 @@ function HomePage() {
   const [data, Setdata] = React.useState(null);
   const [error, Seterror] = React.useState(false);
   const [activeBox, SetActiveBox] = React.useState(-1);
-  const[person_id,setId] = React.useState(1)
+  const[person_id,setId] = React.useState(-1)
   const inputref = React.useRef();
   const scrollref = React.useRef();
   const history = useHistory()
@@ -43,7 +43,11 @@ function HomePage() {
   };
 
   const handleSearch = () => {
+    if(person_id!==-1){
     history.push(`/person/${person_id}`)
+    }else{
+      history.push(`/wrongName`)
+    }
   };
 
   React.useEffect(() => {
@@ -74,7 +78,7 @@ function HomePage() {
         SetActiveBox((prev) => prev + 1);
         break;
       case 13:
-        getData(inputref.current.value);
+        handleSearch();
         break;
       default:
         break;
@@ -82,7 +86,7 @@ function HomePage() {
   };
 
   React.useEffect(()=>{
-   
+    
     if (activeBox > -1 && data?.length>activeBox) {
       
       let currentName = data[activeBox].name;

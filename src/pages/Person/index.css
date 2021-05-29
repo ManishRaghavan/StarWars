@@ -1,3 +1,36 @@
-.person h1 {
-    color: #ecd014;
+.person-card{
+    height: 600px;
+    width: 325px;
+    margin: 50px auto;
+    background-color: #2d2f30;
+    border-radius: 5px;
 }
+.person-card--logo{
+    width: 150px;
+    margin-left: 90px;
+}
+.person-card--contentBox{
+    height: 40px;
+    width: 80%;
+    border-radius: 8px;
+    background-color: #F8DB15;
+    text-align: center;
+    margin-left: 30px;
+}
+.person-card--contentBox--p{
+    padding: 8px;
+    font-weight: 500;
+}
+.person-card--redirectBtn{
+    height: 40px;
+    width: 80%;
+    border-radius: 8px;
+    background-color: #ff8800;
+    text-align: center;
+    margin-left: 30px;
+}
+.person-card--redirectBtn--p{
+    padding: 8px;
+    font-weight: 800;
+}
+
