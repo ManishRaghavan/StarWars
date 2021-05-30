@@ -6,6 +6,7 @@ import logo from "./star-wars-logo.png";
 
 function Person() {
   const [person_data, setPersonData] = React.useState([]);
+  const[loader,setloader] = React.useState(false)
   const history = useHistory();
   const location = useLocation();
 
@@ -15,9 +16,13 @@ function Person() {
   */
   React.useEffect(() => {
     let id = +location.pathname.split("/")[2];
+    setloader(true)
     axios
-      .get(`http://swapi.dev/api/people/${id}/`)
-      .then((res) => setPersonData(res.data))
+      .get(`https://swapi.dev/api/people/${id}/`)
+      .then((res) => {
+        setPersonData(res.data)
+        setloader(false)
+      })
       .catch((err) => err);
   }, [location.pathname]);
 
@@ -41,6 +46,7 @@ function Person() {
         ></path>
       </svg>
       <img src={logo} alt="Star Wars Logo" className="person-card--logo" />
+      {!loader?<React.Fragment>
       <div className="person-card--contentBox">
         <p className="person-card--contentBox--p">Name : {person_data?.name}</p>
       </div>
@@ -72,6 +78,8 @@ function Person() {
       <div className="person-card--redirectBtn" onClick={handleRedirect}>
         <p className="person-card--redirectBtn--p">Go back to search..</p>
       </div>
+      </React.Fragment>:
+      <div className="person-card--loader"></div>}
     </div>
   );
 }

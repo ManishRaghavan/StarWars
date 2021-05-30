@@ -11,7 +11,7 @@ function HomePage() {
   const [loader, Setloader] = React.useState(true);
   const [data, Setdata] = React.useState(null);
   const [error, Seterror] = React.useState(false);
-  const [activeBox, SetActiveBox] = React.useState(-1);
+  const [activeBox, SetActiveBox] = React.useState(0);
   const [person_id, setId] = React.useState(-1);
   
   //using refs for the input and scroll bar to add the features like suggestion names and scroll using keys
@@ -74,15 +74,21 @@ function HomePage() {
   const handlekeyUp = (e) => {
     switch (e.keyCode) {
       case 38:
-        scrollref.current.scrollTop -= 22;
-        if (activeBox < 0) {
-          SetActiveBox(data?.length - 1);
+      
+        scrollref.current.scrollTop -= 70;
+        
+        if (activeBox <= 0) {
+          scrollref.current.scrollTop = 580
+          SetActiveBox(data?.length);
         }
         SetActiveBox((prev) => prev - 1);
         break;
       case 40:
-        scrollref.current.scrollTop += 22;
+
+        scrollref.current.scrollTop += 70;
+
         if (activeBox === data?.length - 1) {
+          scrollref.current.scrollTop = 0;
           SetActiveBox(-1);
         }
         SetActiveBox((prev) => prev + 1);
@@ -101,6 +107,7 @@ function HomePage() {
   */  
   React.useEffect(() => {
     if (activeBox > -1 && data?.length > activeBox) {
+      
       let currentName = data[activeBox].name;
       inputref.current.value = currentName;
       let idNumber = data[activeBox]?.url.split("/");
@@ -118,7 +125,7 @@ function HomePage() {
           ref={inputref}
           onChange={(e) => handleQuery(e.target.value)}
           className="search-box--input"
-          placeholder="search by name"
+          placeholder="search by name..."
         />
         {query !== "" ? (
           <React.Fragment>

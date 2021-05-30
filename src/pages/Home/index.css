@@ -55,6 +55,7 @@
   margin-left: 20px;
   border: 1px solid black;
   background-color: black;
+  
 }
 
 .search-box--loader {
@@ -89,10 +90,11 @@
   display: none;
 }
 .suggestion-box--splitLine {
-  width: 90%;
+  width: 405px;
   border: 0.5px solid black;
   background-color: black;
   margin-left: 20px;
+  position: fixed;
 }
 .error-text {
   color: #f8db15;
@@ -116,4 +118,7 @@
   .search-box--searchBtn {
     width: 30px;
   }
+  .suggestion-box--splitLine{
+    width: 250px;
+  } 
 }
