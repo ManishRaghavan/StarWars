@@ -45,7 +45,7 @@ function HomePage() {
     inputref.current.value = "";
     Setquery("");
     Setdata(null);
-    SetActiveBox(-1);
+    SetActiveBox(0);
   };
 
   const handleSearch = () => {
@@ -61,6 +61,7 @@ function HomePage() {
       alert("something went wrong reoad the page");
     }
     if (query !== "") {
+      SetActiveBox(0);
       getData(query);
     }
   }, [query,error]);

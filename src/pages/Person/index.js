@@ -6,7 +6,7 @@ import logo from "./star-wars-logo.png";
 
 function Person() {
   const [person_data, setPersonData] = React.useState([]);
-  const[loader,setloader] = React.useState(false)
+  const[loader,setloader] = React.useState(true)
   const history = useHistory();
   const location = useLocation();
 
